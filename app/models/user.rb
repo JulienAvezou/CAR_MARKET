@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one_attached :image
+  has_many :cars
   
   validates :email, presence: true, uniqueness: true
   validates :first_name, presence: true
