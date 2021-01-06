@@ -1,0 +1,9 @@
+  <div class="container mt-5 mr-2 text-center">
+    <% @cars.each do |car| %>
+    <div class="card" style="width: 40rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to car.name, car_path(car) %></h5>
+      </div>
+    </div>
+    <% end %>
+  </div>
