@@ -6,8 +6,6 @@
       <h5 class="card-title"><%= link_to user.first_name, user_path(user), :class => "btn-link" %><small class="ml-2">(<%= user.friends.length %>)</small></h5>
       <% if @current_user.friend_with?(user) %>
       <p>Friend</p>
-      <% else %>
-      <p>Not Friend</p>
       <% end %>
     </div>
   </div>

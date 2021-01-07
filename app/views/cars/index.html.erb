@@ -13,6 +13,11 @@
     <div class="card mt-4">
       <div class="card-body">
         <h5 class="card-title"><%= link_to car.name, car_path(car), :class => "btn-link" %></h5>
+        <% if car.photo.attached? %>
+        <%= image_tag car.photo, :class => "avatar-large" %>
+        <% else %>
+        <%= image_tag "car-placeholder.png", :class => "avatar-large" %>
+        <% end %>
 
         <% check = @friends & car.user.friends %>
         <% if !check.empty? && !@friends.include?(car.user) %>

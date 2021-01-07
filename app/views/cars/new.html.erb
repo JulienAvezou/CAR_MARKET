@@ -4,6 +4,9 @@
   <%= f.input :name %>
   <%= f.input :price %>
   <%= f.input :specs %>
+  <%= f.label :photo, "You can upload a Picture:" %><br>
+  <%= f.file_field :image %><br>
+  <hr>
   <%= f.submit %>
   <% end %>
   <p><%= link_to "Back", :back, :class => "link-reset" %></p>

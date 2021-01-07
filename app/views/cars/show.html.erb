@@ -3,6 +3,11 @@
   <div class="card mt-4">
     <div class="card-body">
       <h5 class="card-title"><%= @car.name %></h5>
+      <% if @car.photo.attached? %>
+      <%= image_tag @car.photo, :class => "avatar-large" %>
+      <% else %>
+      <%= image_tag "car-placeholder.png", :class => "avatar-large" %>
+      <% end %>
       <p class="card-text">Price per day: <%= @car.price %></p>
       <p class="card-text">Specs: <%= @car.specs %></p>
       <p class="card-text">Owner: <%= @owner.first_name %></p>
