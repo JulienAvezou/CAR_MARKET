@@ -9,11 +9,28 @@
       <%= image_tag @owner.image, :class => "avatar" %>
       <% end %>
     </div>
+    <h4>Pros & Cons:</h4>
+    <% if @pros && @cons %>
+    <p><%= @pros %></p>
+    <p><%= @cons %></p>
+    <% else %>
+    <p>Car data unknown</p>
+    <% end %>
+    <h4>Common friends:</h4>
+    <% if @common_friends.length > 0 %>
     <% @common_friends.each do |friend| %>
     <p><%= friend.first_name %></p>
     <% end %>
+    <% else %>
+    <p>No common friends</p>
+    <% end %>
+    <h4>Similar cars:</h4>
+    <% if @similar_cars.length > 0 %>
     <% @similar_cars.each do |car| %>
     <p><%= link_to car.name, car_path(car) %></p>
+    <% end %>
+    <% else %>
+    <p>No similar cars found</p>
     <% end %>
   </div>
 </div>

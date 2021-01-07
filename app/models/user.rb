@@ -1,13 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   
   has_one_attached :image
   has_many :cars, dependent: :destroy
-
-  has_many :invitations
+  has_many :invitations, dependent: :destroy
   has_many :pending_invitations, -> { where confirmed: false }, class_name: 'Invitation', foreign_key: "friend_id" 
   
   validates :email, presence: true, uniqueness: true
@@ -28,5 +26,5 @@ class User < ApplicationRecord
   def send_invitation(user)
     invitations.create(friend_id: user.id)
   end
-  
+
 end
