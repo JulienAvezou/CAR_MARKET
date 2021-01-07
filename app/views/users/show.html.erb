@@ -1,0 +1,16 @@
+<div class="container mt-5 mr-2 text-center">
+  <div class="card" style="width: 40rem;">
+    <div class="card-body">
+      <h5 class="card-title">First name: <%= @user.first_name %></h5>
+      <p class="card-text">Last name: <%= @user.last_name %></p>
+      <% if @user.image.attached? %>
+      <%= image_tag @user.image, :class => "avatar" %>
+      <% end %>
+    </div>
+    <% if !@current_user.friend_with?(@user) %>
+    <p><%= link_to "Request", new_user_invitation_path(@user) %></p>
+    <% else %>
+    <p>Already friends</p>
+    <% end %>
+  </div>
+</div>

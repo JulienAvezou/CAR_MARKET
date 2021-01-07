@@ -1,0 +1,10 @@
+  <div class="container mt-5 mr-2 text-center">
+    <h4>My friends</h4>
+    <% @friends.each do |friend| %>
+    <div class="card" style="width: 40rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= friend.first_name %></h5>
+      </div>
+    </div>
+    <% end %>
+  </div>
