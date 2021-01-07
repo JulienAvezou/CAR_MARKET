@@ -5,8 +5,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @friends = current_user.friends
     @user = current_user
+    @friends = current_user.friends
+    @cars = current_user.cars
   end
 
 end

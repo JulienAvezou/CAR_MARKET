@@ -1,9 +1,32 @@
   <div class="container mt-5 mr-2 text-center">
+    <%= form_tag cars_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a car"
+  %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
     <% @cars.each do |car| %>
     <div class="card" style="width: 40rem;">
       <div class="card-body">
         <h5 class="card-title"><%= link_to car.name, car_path(car) %></h5>
+
+        <% check = @friends & car.user.friends %>
+        <% if !check.empty? && !@friends.include?(car.user) %>
+        <p>You have a common relationship with the car's owner!</p>
+        <p>(<%= @user.first_name %> => <%= check[0].first_name %> => <%= link_to car.user.first_name, user_path(car.user) %>)</p>
+
+        <% elsif @friends.include?(car.user) %>
+        <p>You are directly friends with the car's owner. Contact that person now!</p>
+        <p>(<%= @user.first_name %> => <%= link_to car.user.first_name, user_path(car.user) %>)</p>
+
+        <% else %>
+        <p>You have no common friends with the owner!</p>
+        <% end %>
+
       </div>
     </div>
     <% end %>
+    <%= link_to "Refresh List", cars_path %>
   </div>

@@ -1,6 +1,15 @@
 class CarsController < ApplicationController
   def index
-    @cars = Car.all
+    @user = current_user
+    @friends = current_user.friends
+  
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR specs ILIKE :query"
+      @cars = Car.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @cars = Car.select { |car| car.user_id != current_user.id }
+    end
+    
   end
 
   def new
