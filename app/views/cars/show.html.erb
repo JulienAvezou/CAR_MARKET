@@ -4,8 +4,16 @@
       <h5 class="card-title">Name: <%= @car.name %></h5>
       <p class="card-text">Price per day: <%= @car.price %></p>
       <p class="card-text">Specs: <%= @car.specs %></p>
-      <p class="card-text"><%= @user.first_name %></p>
-      <%= image_tag @user.image, :class => "avatar" %>
+      <p class="card-text"><%= @owner.first_name %></p>
+      <% if @owner.image.attached? %>
+      <%= image_tag @owner.image, :class => "avatar" %>
+      <% end %>
     </div>
+    <% @common_friends.each do |friend| %>
+    <p><%= friend.first_name %></p>
+    <% end %>
+    <% @similar_cars.each do |car| %>
+    <p><%= link_to car.name, car_path(car) %></p>
+    <% end %>
   </div>
 </div>

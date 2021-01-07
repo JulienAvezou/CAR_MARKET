@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :cars, only: [:index, :new, :show, :create]
 
   root to: 'pages#home'
+  get 'friends', to: 'pages#friends'
+  get 'members', to: 'pages#members'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -5,17 +5,28 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one_attached :image
-  has_many :cars
+  has_many :cars, dependent: :destroy
+
+  has_many :invitations
+  has_many :pending_invitations, -> { where confirmed: false }, class_name: 'Invitation', foreign_key: "friend_id" 
   
   validates :email, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  def first_name=(s)
-    write_attribute(:first_name, s.to_s.titleize) # The to_s is in case you get nil/non-string
+  def friends
+    sent_confirmations = Invitation.where(user_id: id, confirmed: true).pluck(:friend_id)
+    received_confirmations = Invitation.where(friend_id: id, confirmed: true).pluck(:user_id)
+    ids = sent_confirmations + received_confirmations
+    User.where(id: ids)
   end
 
-  def last_name=(s)
-    write_attribute(:last_name, s.to_s.titleize) # The to_s is in case you get nil/non-string
+  def friend_with?(user)
+    Invitation.confirmed_record?(id, user.id)
   end
+
+  def send_invitation(user)
+    invitations.create(friend_id: user.id)
+  end
+  
 end

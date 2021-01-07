@@ -3,4 +3,14 @@ class PagesController < ApplicationController
   
   def home
   end
+
+  def friends
+    @friends = current_user.friends
+    @user = current_user
+  end
+
+  def members
+    @members = User.select { |user| user.id != current_user.id }
+    @user = current_user
+  end
 end

@@ -9,7 +9,11 @@ class CarsController < ApplicationController
 
   def show
     @car = Car.find(params[:id])
-    @user = User.find(@car.user_id)
+    @owner = User.find(@car.user_id)
+    user_friends = current_user.friends
+    owner_friends = @owner.friends
+    @common_friends = user_friends & owner_friends
+    @similar_cars = Car.select{ |car| car.id != @car.id && (car.name == @car.name || car.price == @car.price) }.take(2)
   end
 
   def create
