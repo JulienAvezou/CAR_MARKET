@@ -1,19 +1,24 @@
-  <div class="container mt-5 mr-2 text-center">
+  <div class="container mt-5 text-center">
     <h4>My friends</h4>
     <% @friends.each do |friend| %>
-    <div class="card" style="width: 40rem;">
+    <div class="card mt-4">
       <div class="card-body">
-        <h5 class="card-title"><%= friend.first_name %></h5>
+        <h5 class="card-title"><%= link_to friend.first_name, user_path(friend), :class => "btn-link" %></h5>
       </div>
     </div>
     <% end %>
-    <h4>My cars</h4>
+    <h4 class="mt-4">My cars</h4>
     <% @cars.each do |car| %>
-    <div class="card" style="width: 40rem;">
+    <div class="card mt-4">
       <div class="card-body">
-        <h5 class="card-title"><%= car.name %></h5>
+        <h5 class="card-title"><%= link_to car.name, car_path(car), :class => "btn-link" %></h5>
+        <% if car.photo.attached? %>
+        <%= image_tag car.photo, :class => "avatar-large" %>
+        <% else %>
+        <%= image_tag "car-placeholder.png", :class => "avatar-large" %>
+        <% end %>
       </div>
     </div>
     <% end %>
-    <p><%= link_to "Back", :back %></p>
+    <p><%= link_to "Back", :back, :class => "link-reset" %></p>
   </div>

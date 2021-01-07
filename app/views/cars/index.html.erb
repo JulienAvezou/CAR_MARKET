@@ -1,25 +1,32 @@
-  <div class="container mt-5 mr-2 text-center">
+  <div class="container mt-5 text-center">
+    <h4>Find your perfect car</h4>
     <%= form_tag cars_path, method: :get do %>
     <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find a car"
   %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= submit_tag "Search", class: "btn btn-primary mt-3 mb-4" %>
     <% end %>
+    <h4>Results</h4>
     <% @cars.each do |car| %>
-    <div class="card" style="width: 40rem;">
+    <div class="card mt-4">
       <div class="card-body">
-        <h5 class="card-title"><%= link_to car.name, car_path(car) %></h5>
+        <h5 class="card-title"><%= link_to car.name, car_path(car), :class => "btn-link" %></h5>
+        <% if car.photo.attached? %>
+        <%= image_tag car.photo, :class => "avatar-large" %>
+        <% else %>
+        <%= image_tag "car-placeholder.png", :class => "avatar-large" %>
+        <% end %>
 
         <% check = @friends & car.user.friends %>
         <% if !check.empty? && !@friends.include?(car.user) %>
         <p>You have a common relationship with the car's owner!</p>
-        <p>(<%= @user.first_name %> => <%= check[0].first_name %> => <%= link_to car.user.first_name, user_path(car.user) %>)</p>
+        <p>(<%= @user.first_name %> => <%= check[0].first_name %> => <%= link_to car.user.first_name, user_path(car.user), :class => "link-reset" %>)</p>
 
         <% elsif @friends.include?(car.user) %>
         <p>You are directly friends with the car's owner. Contact that person now!</p>
-        <p>(<%= @user.first_name %> => <%= link_to car.user.first_name, user_path(car.user) %>)</p>
+        <p>(<%= @user.first_name %> => <%= link_to car.user.first_name, user_path(car.user), :class => "link-reset" %>)</p>
 
         <% else %>
         <p>You have no common friends with the owner!</p>
@@ -28,5 +35,5 @@
       </div>
     </div>
     <% end %>
-    <%= link_to "Refresh List", cars_path %>
+    <%= link_to "Refresh List", cars_path, :class => "link-reset" %>
   </div>

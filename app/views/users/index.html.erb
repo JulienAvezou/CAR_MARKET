@@ -1,12 +1,11 @@
-<div class="container mt-5 mr-2 text-center">
+<div class="container mt-5 text-center">
+  <h4>Members</h4>
   <% @users.each do |user| %>
-  <div class="card" style="width: 40rem;">
+  <div class="card mt-4">
     <div class="card-body">
-      <h5 class="card-title"><%= link_to user.first_name, user_path(user) %>(<%= user.friends.length %>)</h5>
+      <h5 class="card-title"><%= link_to user.first_name, user_path(user), :class => "btn-link" %><small class="ml-2">(<%= user.friends.length %>)</small></h5>
       <% if @current_user.friend_with?(user) %>
       <p>Friend</p>
-      <% else %>
-      <p>Not Friend</p>
       <% end %>
     </div>
   </div>
