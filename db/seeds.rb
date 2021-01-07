@@ -16,3 +16,9 @@ Car.create(name: "Car3", price: 150, specs: "stylish", user_id: 3)
 Car.create(name: "Car4", price: 200, specs: "wow", user_id: 4)
 Car.create(name: "Car5", price: 120, specs: "nice", user_id: 5)
 
+CarFile.create(name: "Car1", pros: "sturdy", cons: "slow")
+CarFile.create(name: "Car2", pros: "fast", cons: "expensive")
+CarFile.create(name: "Car3", pros: "reliable", cons: "slow")
+CarFile.create(name: "Car4", pros: "stylish", cons: "polluting")
+CarFile.create(name: "Car5", pros: "rare", cons: "high maintenance")
+
