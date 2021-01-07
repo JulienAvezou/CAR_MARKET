@@ -19,7 +19,6 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @owner = User.find(@car.user_id)
-    pros_and_cons = @car.pros_and_cons(@car.name)
     if CarFile.find_by(name: @car.name)
       file = CarFile.find_by(name: @car.name)
       @pros = file.pros

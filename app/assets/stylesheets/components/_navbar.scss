@@ -3,6 +3,10 @@
   background: white;
 }
 
+.navbar-brand:hover {
+  opacity: 60%;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -16,5 +20,12 @@
 }
 
 .navbar-lewagon .nav-link {
-  margin-right: 6px;
+  margin-right: 8px;
+  background: #e5e52b;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.nav-link:hover {
+  background: yellow;
 }
