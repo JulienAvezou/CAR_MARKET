@@ -7,4 +7,13 @@
       </div>
     </div>
     <% end %>
+    <h4>My cars</h4>
+    <% @cars.each do |car| %>
+    <div class="card" style="width: 40rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= car.name %></h5>
+      </div>
+    </div>
+    <% end %>
+    <p><%= link_to "Back", :back %></p>
   </div>
