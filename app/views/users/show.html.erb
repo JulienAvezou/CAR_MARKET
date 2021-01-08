@@ -11,16 +11,14 @@
       <% end %>
     </div>
     <% if !@current_user.friend_with?(@user) %>
-    <p><%= link_to "Request", new_user_invitation_path(@user), :class => "btn-link" %></p>
-    <% else %>
-    <p>Already friends</p>
+    <p><%= link_to "Request", new_user_invitation_path(@user), :class => "btn-member-link" %></p>
     <% end %>
   </div>
   <h4 class="mt-4">Member's cars</h4>
   <% @cars.each do |car| %>
   <div class="card mt-4">
     <div class="card-body">
-      <h5 class="card-title"><%= link_to car.name, car_path(car), :class => "btn-link" %></h5>
+      <h5 class="card-title"><%= link_to car.name, car_path(car), :class => "btn-car-link" %></h5>
       <% if car.photo.attached? %>
       <%= image_tag car.photo, :class => "avatar-large" %>
       <% else %>

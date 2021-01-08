@@ -33,7 +33,7 @@
     <h4>Similar cars:</h4>
     <% if @similar_cars.length > 0 %>
     <% @similar_cars.each do |car| %>
-    <p><%= link_to car.name, car_path(car), :class => "btn-link" %></p>
+    <p><%= link_to car.name, car_path(car), :class => "btn-car-link" %></p>
     <% end %>
     <% else %>
     <p>No similar cars found</p>

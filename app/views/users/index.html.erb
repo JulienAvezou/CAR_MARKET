@@ -3,7 +3,7 @@
   <% @users.each do |user| %>
   <div class="card mt-4">
     <div class="card-body">
-      <h5 class="card-title"><%= link_to user.first_name, user_path(user), :class => "btn-link" %><small class="ml-2">(<%= user.friends.length %>)</small></h5>
+      <h5 class="card-title"><%= link_to user.first_name, user_path(user), :class => "btn-member-link" %><small class="ml-2">(<%= user.friends.length %>)</small></h5>
       <% if @current_user.friend_with?(user) %>
       <p>Friend</p>
       <% end %>
