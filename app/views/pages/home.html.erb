@@ -76,3 +76,86 @@
     </footer>
   </div>
 </div>
+
+<%
+=begin%>
+<div class="container">
+  <div id="home-page-car">
+    <div class="full-screen">
+      <div class="slider-content">
+        <div class="slider-content-inner">
+          <div class="row slider-content-inner-one">
+            <div class="col-lg-7">
+              <h2>
+                <span>Cartopia</span>
+                <br>
+                <%= image_tag "logo.png", :class => "car-brand" %>
+                THE Marketplace for cars
+              </h2>
+              <p>Connect with cool people and cool cars.</p>
+              <div class="row">
+                <% if user_signed_in? %>
+                <div class="btn bg-car-primary mt-10 p-2 ml-2 mr-4">
+                  <%= link_to "/cars", :class => "link-reset" do %>
+                  <p class="btn-inner-container mb-0 pl-2 pr-2"> Access cars </p>
+                  <% end %>
+                </div>
+                <% else %>
+                <div class="btn bg-car-primary mt-10 p-2 ml-2 mr-4">
+                  <%= link_to new_user_registration_path, :class => "link-reset" do %>
+                  <p class="btn-inner-container mb-0 pl-2 pr-2"> Sign up </p>
+                  <% end %>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="section-padding">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="section-title">
+            <h6>Why us?</h6>
+            <h3>Our Core Features</h3>
+            <i class="fas fa-cog home-icon mt-10"></i>
+          </div>
+        </div>
+      </div>
+      <div class="custom-container">
+        <div class="row our-features">
+          <div class="col-md-4 col-sm-12 feature-main text-center">
+            <div class="single-feature">
+              <h4>Clean design</h4>
+              <p>Gain a clear overview of available cars.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 feature-main text-center">
+            <div class="single-feature">
+              <h4>User-friendly</h4>
+              <p>Easily search for contacts and cars.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 feature-main text-center">
+            <div class="single-feature">
+              <h4>Intuitive</h4>
+              <p>Find your dream car and hit the road soon!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div id="footerone">
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="copy-write mb-3">Copyright © 2020 <strong>Cartopia</strong> | All Rights Reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+<%
+=end%>
