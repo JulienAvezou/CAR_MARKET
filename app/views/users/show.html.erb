@@ -10,8 +10,12 @@
       <%= image_tag "https://eu.ui-avatars.com/api/?name=#{@user.first_name}+#{@user.last_name}", :class => "avatar" %>
       <% end %>
     </div>
-    <% if !@current_user.friend_with?(@user) %>
+    <% if @current_user.friend_with?(@user) %>
+    <p>You are friends</p>
+    <% elsif !@current_user.friend_with?(@user) && !@check %>
     <p><%= link_to "Request", new_user_invitation_path(@user), :class => "btn-member-link" %></p>
+    <% else %>
+    <p>Request pending</p>
     <% end %>
   </div>
   <h4 class="mt-4">Member's cars</h4>
