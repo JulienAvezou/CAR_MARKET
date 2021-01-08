@@ -156,8 +156,16 @@
   text-decoration: none !important;
 }
 
-.btn-link {
+.btn-car-link {
   background: #e5e52b;
+  border: 1px solid black;
+  border-radius: 8px;
+  text-decoration: none !important;
+  color: black;
+  padding: 4px;
+}
+.btn-member-link {
+  background: #c9c6af;
   border: 1px solid black;
   border-radius: 8px;
   text-decoration: none !important;
